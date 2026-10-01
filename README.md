@@ -41,6 +41,18 @@ Outputs in `output/`:
 
 Variables are standardized, reduced with principal component analysis (keeping enough dimensions to explain 80 percent of the variance by default), and each school's peers are its nearest neighbors in that space. This replaces fixed k-means groups, which perform poorly when schools form a continuum rather than distinct clusters. Record every variable inclusion and exclusion in `docs/codebook.md`.
 
+## Beating the odds (R/bto_schools.R)
+
+Identifies schools performing above or below what their student population predicts, using public school-level data. Adapted from Butler and Poquette (2020), which requires student-level records.
+
+- Use multi-year data (one row per school per year) whenever possible; set `year_col` in CONFIG. Single-year results mix real school effects with noise.
+- Predictors should describe who a school serves (poverty, English learners, disabilities, mobility), not what it does (attendance, staffing, climate).
+- A school is flagged only when its 95 percent interval excludes zero. Expected-rank percentiles are reported for ranking, not for flagging.
+- The script reruns the model with and without race and reports which schools change status (`output/bto_race_sensitivity.csv`).
+- Pair results with the peer finder: for each school flagged above expected, its peer list identifies comparison schools for case study selection.
+
+Butler, A., & Poquette, H. (2020, December 8). *Beating the odds: Implementing a BTO analysis*. Strategic Data Project, Center for Education Policy Research at Harvard University. https://github.com/drbtlr/beating-the-odds
+
 ## Responsible use
 
 Peer sets reflect only the variables chosen. Including demographic variables (such as race) changes who counts as a peer and can normalize lower expectations; run the analysis with and without them and report the difference. Check every peer list against local knowledge: magnet and selective-admission schools can look similar on paper.
