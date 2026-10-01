@@ -1,0 +1,2 @@
+school_id,school_name,level,enrollment,pct_econ_disadvantaged,pct_english_learners,pct_special_education,pct_chronic_absence,attendance_rate,teacher_experience_avg,pct_new_teachers,per_pupil_expenditure,outcome_ela_proficient,outcome_math_proficient
+EXAMPLE-001,Example Elementary School,ES,412,0.62,0.18,0.15,0.21,0.93,11.4,0.12,17850,48.2,41.9

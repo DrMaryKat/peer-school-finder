@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Peer School Finder"
+authors:
+  - family-names: "Boudreaux"
+    given-names: "Mary K"
+    affiliation: "Southern Connecticut State University"
+version: 1.0.0
+date-released: 2026-10-01
+license: MIT
+references:
+  - type: software
+    title: "Identifying Similar Schools: Guide to Creating Comparison School Groups"
+    authors:
+      - family-names: "Butler"
+        given-names: "Aaron"
+    year: 2020
+    url: "https://github.com/drbtlr/similar-schools"
