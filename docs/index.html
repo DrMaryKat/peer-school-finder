@@ -174,7 +174,7 @@ tbody tr:last-child td { border-bottom: 0; }
   <div class="step" id="s4">
     <h2><span class="n">4</span> Pick a school</h2>
     <label class="f" for="target">School</label>
-    <input type="text" id="target" list="schools" placeholder="Start typing a school name" disabled>
+    <input type="text" id="target" list="schools" placeholder="Type part of a school name" disabled>
     <datalist id="schools"></datalist>
     <div class="row2"><span>Number of peers</span><b id="nPeersOut">15</b></div>
     <input type="range" id="nPeers" min="5" max="30" value="15">
@@ -1130,6 +1130,10 @@ function pickTarget(id) {
   const r = S.rows.find(x => String(x[idc]) === String(id));
   if (r) { S.targetId = String(r[idc]); $("target").value = label(r); $("s4").classList.add("done"); schedule(); }
 }
+let prevTarget = "";
+$("target").addEventListener("focus", () => { prevTarget = $("target").value; $("target").value = ""; });
+$("target").addEventListener("blur", () => { if (!$("target").value.trim()) $("target").value = prevTarget; });
+$("target").addEventListener("keydown", e => { if (e.key === "Escape") { $("target").value = prevTarget; $("target").blur(); } });
 $("target").addEventListener("change", () => {
   const v = $("target").value, m = v.match(/\(([^()]*)\)\s*$/);
   const { id: idc, name: nc } = idNameGroup();
